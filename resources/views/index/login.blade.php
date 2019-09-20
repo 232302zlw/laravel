@@ -22,9 +22,20 @@
         <div class="lrList"><input type="password" name="pwd" placeholder="输入密码" /></div>
       </div><!--lrBox/-->
       <div class="lrSub">
-        <input type="submit" value="立即登录" />
+        <input type="submit" value="立即登录" /><br/>
+        <input type="submit" value="微信登录" id="wechat" />
       </div>
     </form><!--reg-login/-->
-  
+
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script>
+        $(function(){
+            $('#wechat').click(function(){
+                location.href='/wechat/wechat_login';
+                return false;
+            });
+        });
+    </script>
+
 @include('layout.footer')
 @endsection

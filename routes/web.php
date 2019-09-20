@@ -153,3 +153,14 @@ Route::prefix('index')->middleware('landing')->group(function(){
 	Route::get('pay','index\IndexController@pay');					// 支付视图
 });
 /**********************************************************************************/
+
+
+/**********************************************************************************/
+Route::prefix('wechat')->group(function(){
+    Route::get('list','WechatController@get_user_list');
+    Route::get('detail','WechatController@get_user_detail');
+    Route::get('login','WechatController@login');   // 微信授权登陆
+    Route::get('wechat_login','WechatController@wechat_login');
+    Route::get('code','WechatController@code');     // 接收用户code
+});
+/**********************************************************************************/

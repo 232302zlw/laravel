@@ -25,7 +25,7 @@ class LoginController extends Controller
       $info = Users::where($where)->first();
     	// dd($info);
       if (empty($info)) {
-        echo "<script>alert('账号或密码错误');history.back()</script>";
+        echo "<script>alert('账号或密码错误');history.back()</script>";die;
       }
       $user = [
         'id' => $info['id'],
@@ -86,7 +86,7 @@ class LoginController extends Controller
     // 发送邮件方法
     public function sendemail($email,$msg)
     {
-    	
+
 	    \Mail::raw($msg,function($message)use($email){
 		    //设置主题
 		    $message->subject("欢迎注册微商城！");

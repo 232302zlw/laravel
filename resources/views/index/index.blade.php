@@ -3,7 +3,7 @@
 <div class="head-top">
       <img src="/index/images/head.jpg" />
       <dl>
-       <dt>@if ($user['headimg']=='') <a><img src="/index/images/touxiang.jpg" /></a> @else <a><img src="http://www.pic.com/{{$user['headimg']}}" /></a> @endif</dt>
+       <dt>@if ($user['headimg']=='') <a><img src="/index/images/touxiang.jpg" /></a> @else <a><img src="{{asset($user['headimg'])}}" /></a> @endif</dt>
        <dd>
         <h1 class="username">@if ($user['name']=='') {{$user['email']}} @else {{$user['name']}} @endif</h1>
         <ul>
@@ -20,7 +20,7 @@
       <input type="text" class="seaText fl" />
       <input type="submit" value="搜索" class="seaSub fr" />
      </form><!--search/-->
-      @if ($user['email']=='')  
+      @if ($user['email']=='')
         <ul class="reg-login-click">
           <li><a href="{{url('login')}}">登录</a></li>
           <li><a href="{{url('register')}}" class="rlbg">注册</a></li>
@@ -29,10 +29,10 @@
       @endif
       <div id="sliderA" class="slider">
         @foreach($is_new as $x)
-          <img src="http://www.pic.com/{{$x->goods_img}}" alt="">
+          <img src="{{asset($x->goods_img)}}" alt="">
         @endforeach
       </div>
-      
+
      <!-- <div id="sliderA" class="slider">
       <img src="/index/images/image1.jpg" />
       <img src="/index/images/image2.jpg" />
@@ -51,7 +51,7 @@
       @foreach($is_new as $new)
       <div class="index-pro1-list">
        <dl>
-        <dt><a href="{{url('index/detail/'.$new->goods_id)}}"><img src="http://www.pic.com/{{$new->goods_img}}"/></a></dt>
+        <dt><a href="{{url('index/detail/'.$new->goods_id)}}"><img src="{{asset($new->goods_img)}}"/></a></dt>
         <dd class="ip-text"><a href="{{url('index/detail/'.$new->goods_id)}}">{{$new->goods_name}}</a><span>已售：488</span></dd>
         <dd class="ip-price"><strong>¥{{$new->goods_price}}</strong></dd>
        </dl>
@@ -71,7 +71,7 @@
      <div class="prolist">
       @foreach($is_hot as $hot)
       <dl>
-       <dt><a href="{{('index/detail/'.$hot->goods_id)}}"><img src="http://www.pic.com/{{$hot->goods_img}}" width="100" height="100" /></a></dt>
+       <dt><a href="{{('index/detail/'.$hot->goods_id)}}"><img src="{{asset($hot->goods_img)}}" width="100" height="100" /></a></dt>
        <dd>
         <h3><a href="{{('index/detail/'.$hot->goods_id)}}">{{$hot->goods_name}}</a></h3>
         <div class="prolist-price"><strong>¥{{$hot->goods_price}}</strong>

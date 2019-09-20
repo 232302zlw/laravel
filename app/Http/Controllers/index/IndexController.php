@@ -9,16 +9,46 @@ use App\index\Goods;
 use App\index\Car;
 use Validator;
 use DB;
+use Illuminate\Support\Facades\Redis;
 
 class IndexController extends Controller
 {
 	/*前台首页视图展示*/
     public function index()
     {
-        $is_new = Goods::where(['is_new'=>1,'is_up'=>1])->get();
-        $is_hot = Goods::where(['is_hot'=>1,'is_up'=>1])->get();
-        // dump($is_hot);
+        // Redis
+        // Redis::set('name','123456');
+        // echo Redis::get('name');
+
+        // Memcache
+//        $mem = new \Memcache;
+//        $mem -> connect('127.0.0.1','11211');
+//        // $memcache -> set('memcache','Never Say Die!',0,10);
+//        // echo $memcache -> get('memcache');
+//        // $datas = Student::get();
+//
+//        // 取memcache
+//        $is_new = $mem -> get('is_new');
+//        if (empty($is_new)) {
+//            $datas = json_encode(Goods::where(['is_new'=>1,'is_up'=>1])->get());
+//            $mem -> set('is_new',$datas,0,3600);
+//        }
+//
+//        $is_hot = $mem -> get('is_hot');
+//        if (empty($is_hot)) {
+//            $datas = json_encode(Goods::where(['is_hot'=>1,'is_up'=>1])->get());
+//            $mem -> set('is_hot',$datas,0,3600);
+//        }
+
+
+        // dump($is_new);
+        // dump($is_hot);die;
+         $is_new = Goods::where(['is_new'=>1,'is_up'=>1])->get();
+         $is_hot = Goods::where(['is_hot'=>1,'is_up'=>1])->get();
+//         dump($is_hot);
+//         dd($is_new);
 	    $user = request()->session()->get('user');
+//    	return view('index.index',['user'=>$user,'is_new'=>json_decode($is_new),'is_hot'=>json_decode($is_hot)]);
     	return view('index.index',['user'=>$user,'is_new'=>$is_new,'is_hot'=>$is_hot]);
     }
 
